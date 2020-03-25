@@ -1,0 +1,40 @@
+﻿@page "{token?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Mdfy.Me - URL Shortener ";
+}
+
+    <div class="text-center">
+        <div class="top-text">
+            <h1 class="display-4 font-weight-bold">Shorten your link</h1>
+            <p>Enter your URL below to shorten it.</p>
+        </div>
+
+        <div class="form-container">
+            <form method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="inputURL" placeholder="Enter your URL" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="submit">Shorten</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        @if (Model.ShortURL != null)
+        {
+            <div class="alert alert-success" role="alert">
+                Your url: @Model.ShortURL.URL is now <a href="/@Model.ShortURL.Token">http://mdfy.me/@Model.ShortURL.Token</a>
+            </div>
+        }
+
+        @if (ViewData["NullError"] != null)
+        {
+            <div class="alert alert-danger" role="alert">@ViewData["NullError"]</div>
+        }
+
+        <div class="bottom-text">
+            <p>Website by <a class="text-light" href="http://samuelhennell.com">Samuel Hennell</a>.</p>
+        </div>
+
+    </div>
